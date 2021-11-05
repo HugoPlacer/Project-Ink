@@ -32,7 +32,9 @@ var savedata = {
 func _ready():
 	get_tree().set_quit_on_go_back(false)
 	load_day()
-	date.hash = 15893849432522
+	welcome_window()
+	print(savedata)
+	#date.hash = 15893849432522
 	
 	if date.hash() != savedata["date"].hash():
 		print ("dia diferente")
@@ -74,12 +76,13 @@ func _process(delta):
 	fps_label.set_text(str(Engine.get_frames_per_second()))
 	
 	if ink_total != savedata["ink_total"]:
+		#ink_total = float(ink_total)
 		savedata["ink_total"] = ink_total
-		percent_used = 100 - ink_used * 100/ink_total
+		percent_used = 100 - ink_used * 100 / ink_total
 		save_day()
 	
 	if ink_used != savedata["ink_used"]:
-		savedata["inkused"] = ink_used
+		savedata["ink_used"] = ink_used
 		percent_used = 100 - ink_used * 100/ink_total
 		save_day()
 	
@@ -125,6 +128,7 @@ func load_day():
 		welcome_window()
 		
 func welcome_window():
+	#get_tree().paused = true
 	var welcome_window = $WelcomeDialog
 	welcome_window.popup_centered()
 
@@ -138,5 +142,13 @@ func _notification(what):
 		_on_Back_pressed()
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		_on_Back_pressed()
-		
 
+
+func _on_used_camp_text_entered(new_text):
+	ink_used = float(new_text)
+	print (ink_used)
+
+
+func _on_total_camp_text_entered(new_text):
+	ink_total = float(new_text)
+	print (ink_total)
