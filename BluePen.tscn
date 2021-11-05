@@ -1,0 +1,346 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/default_fontdata.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Titulo.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Texto.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Subtitulo.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Fonts/Campos.tres" type="DynamicFont" id=6]
+[ext_resource path="res://pen_scene.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Screenshot_2021-10-28-10-18-38_3840x1080.png" type="Texture" id=8]
+[ext_resource path="res://Gyro_rotation.gd" type="Script" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 2 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 138.0
+margin_right = -100.0
+margin_bottom = -200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Control"]
+anchor_right = 1.0
+anchor_bottom = 0.192
+margin_top = -0.100006
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Control/VBoxContainer"]
+margin_right = 880.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 0, 200 )
+custom_fonts/font = ExtResource( 3 )
+text = "Lorem Ipsum"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/Control/VBoxContainer"]
+margin_top = 204.0
+margin_right = 880.0
+margin_bottom = 404.0
+rect_min_size = Vector2( 0, 200 )
+custom_fonts/font = ExtResource( 5 )
+text = "Lorem Ipsum"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Control"]
+anchor_left = 0.273
+anchor_top = 0.242
+anchor_right = 1.017
+anchor_bottom = 0.989
+margin_left = 0.759995
+margin_top = -9.004
+margin_right = 2.04004
+margin_bottom = -5.31799
+custom_constants/separation = 87
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiasRestantes" type="Label" parent="Control/Control/VBoxContainer2"]
+margin_right = 656.0
+margin_bottom = 87.0
+custom_fonts/font = ExtResource( 4 )
+text = "Dias restantes:"
+
+[node name="DiasRestantes2" type="ProgressBar" parent="Control/Control/VBoxContainer2"]
+margin_top = 174.0
+margin_right = 656.0
+margin_bottom = 281.0
+rect_min_size = Vector2( 0, 107 )
+custom_fonts/font = SubResource( 1 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dias" type="Label" parent="Control/Control/VBoxContainer2/DiasRestantes2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 6 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cantidad de tinta usada" type="Label" parent="Control/Control/VBoxContainer2"]
+margin_top = 368.0
+margin_right = 656.0
+margin_bottom = 545.0
+rect_min_size = Vector2( 0, 99 )
+custom_fonts/font = ExtResource( 4 )
+text = "Cantidad de tinta
+ usada:"
+
+[node name="TintaUsada" type="ProgressBar" parent="Control/Control/VBoxContainer2"]
+margin_top = 632.0
+margin_right = 656.0
+margin_bottom = 739.0
+rect_min_size = Vector2( 0, 107 )
+custom_fonts/font = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dias totales fecha" type="Label" parent="Control/Control/VBoxContainer2"]
+margin_top = 826.0
+margin_right = 656.0
+margin_bottom = 925.0
+rect_min_size = Vector2( 0, 99 )
+custom_fonts/font = ExtResource( 4 )
+text = "Dias totales y fecha"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Control/VBoxContainer2"]
+margin_top = 1012.0
+margin_right = 656.0
+margin_bottom = 1119.0
+rect_min_size = Vector2( 0, 107 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DiasTotales" type="Label" parent="Control/Control/VBoxContainer2/HBoxContainer"]
+margin_left = 66.0
+margin_right = 326.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 260, 107 )
+custom_fonts/font = ExtResource( 6 )
+text = "x dias"
+align = 1
+valign = 1
+
+[node name="Label5" type="Label" parent="Control/Control/VBoxContainer2/HBoxContainer"]
+margin_left = 330.0
+margin_right = 590.0
+margin_bottom = 107.0
+rect_min_size = Vector2( 260, 107 )
+custom_fonts/font = ExtResource( 6 )
+text = "d/m/a"
+align = 1
+valign = 1
+
+[node name="GraphNode" type="GraphNode" parent="Control/Control/VBoxContainer2"]
+margin_top = 1206.0
+margin_right = 656.0
+margin_bottom = 1506.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Control"]
+anchor_left = -0.0349585
+anchor_top = 0.225792
+anchor_right = 0.353042
+anchor_bottom = 0.934375
+margin_right = -0.0400085
+margin_bottom = -0.600098
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Viewport" type="Viewport" parent="Control/ViewportContainer"]
+size = Vector2( 419, 1700 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="Control/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011, 0.329 )
+cull_mask = 524288
+current = true
+fov = 27.8
+
+[node name="bluepen" parent="Control/ViewportContainer/Viewport" instance=ExtResource( 7 )]
+
+[node name="Fps" type="Label" parent="Control"]
+margin_top = 2265.0
+margin_right = 243.0
+margin_bottom = 2394.0
+custom_fonts/font = SubResource( 2 )
+text = "60"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screenshot_2021-10-28-10-18-38_3840x1080" type="Sprite" parent="Control"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.505882 )
+position = Vector2( 540, 1194 )
+texture = ExtResource( 8 )
+
+[node name="WelcomeDialog" type="WindowDialog" parent="Control"]
+margin_left = 100.0
+margin_top = 697.0
+margin_right = 980.0
+margin_bottom = 1747.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/WelcomeDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 9.0
+custom_constants/separation = 152
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer"]
+margin_right = 889.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = ExtResource( 4 )
+text = "Configuración Inicial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="First_day" type="HBoxContainer" parent="Control/WelcomeDialog/VBoxContainer"]
+margin_top = 252.0
+margin_right = 889.0
+margin_bottom = 352.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_right = 440.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 440, 100 )
+custom_fonts/font = ExtResource( 4 )
+text = "First_day"
+align = 1
+
+[node name="OptionButton" type="OptionButton" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 444.0
+margin_right = 544.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/font = ExtResource( 6 )
+text = "1"
+items = [ "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null ]
+selected = 0
+
+[node name="OptionButton2" type="OptionButton" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 548.0
+margin_right = 648.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/font = ExtResource( 6 )
+text = "1"
+items = [ "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null ]
+selected = 0
+
+[node name="OptionButton3" type="OptionButton" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 652.0
+margin_right = 785.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/font = ExtResource( 6 )
+text = "2021"
+items = [ "2021", null, false, 2021, null, "2022", null, false, 2022, null ]
+selected = 0
+
+[node name="Button" type="Button" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 789.0
+margin_right = 889.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Total_ink" type="HBoxContainer" parent="Control/WelcomeDialog/VBoxContainer"]
+margin_top = 504.0
+margin_right = 889.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer/Total_ink"]
+margin_right = 440.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 440, 100 )
+custom_fonts/font = ExtResource( 4 )
+text = "Total_ink"
+align = 1
+
+[node name="TextEdit" type="TextEdit" parent="Control/WelcomeDialog/VBoxContainer/Total_ink"]
+margin_left = 444.0
+margin_right = 744.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 300, 100 )
+custom_fonts/font = ExtResource( 6 )
+
+[node name="Button" type="Button" parent="Control/WelcomeDialog/VBoxContainer/Total_ink"]
+margin_left = 748.0
+margin_right = 848.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ink_used" type="HBoxContainer" parent="Control/WelcomeDialog/VBoxContainer"]
+margin_top = 756.0
+margin_right = 889.0
+margin_bottom = 856.0
+rect_min_size = Vector2( 0, 100 )
+
+[node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer/Ink_used"]
+margin_right = 440.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 440, 100 )
+custom_fonts/font = ExtResource( 4 )
+text = "Ink_used"
+align = 1

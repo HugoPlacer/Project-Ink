@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/Texto.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Debug.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Campos.tres" type="DynamicFont" id=3]
+[ext_resource path="res://info.svg" type="Texture" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 884.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_right = 440.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 440, 150 )
+rect_pivot_offset = Vector2( -3685.28, -168 )
+custom_fonts/font = ExtResource( 1 )
+text = "Os time"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 444.0
+margin_right = 884.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 440, 150 )
+rect_pivot_offset = Vector2( -3685.28, -168 )
+custom_fonts/font = ExtResource( 1 )
+align = 1
+valign = 1
+
+[node name="Features" type="RichTextLabel" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+custom_fonts/bold_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 986.0
+margin_top = 30.0
+margin_right = 1070.0
+margin_bottom = 108.0
+toggle_mode = true
+icon = ExtResource( 4 )
+flat = true
+expand_icon = true
+
+[node name="Button2" type="Button" parent="."]
+margin_left = 100.0
+margin_top = 30.0
+margin_right = 319.0
+margin_bottom = 107.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSlider" type="VSlider" parent="."]
+margin_left = 15.0
+margin_top = 1655.0
+margin_right = 1087.0
+margin_bottom = 2399.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="VSlider"]
+margin_right = 1070.0
+margin_bottom = 744.0
+
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
+[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[connection signal="value_changed" from="VSlider" to="." method="_on_VSlider_value_changed"]
