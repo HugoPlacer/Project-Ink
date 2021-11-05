@@ -32,6 +32,8 @@ var savedata = {
 func _ready():
 	get_tree().set_quit_on_go_back(false)
 	load_day()
+	print(savedata)
+	#welcome_window()
 	#date.hash = 15893849433232522
 	
 	if date.hash() != savedata["date"].hash():
@@ -141,11 +143,32 @@ func _notification(what):
 		_on_Back_pressed()
 
 
-func _on_used_camp_text_entered(new_text):
-	ink_used = float(new_text)
-	print (ink_used)
-
-
-func _on_total_camp_text_entered(new_text):
-	ink_total = float(new_text)
+func _on_accept_button_pressed():
+	var totalcamp = $WelcomeDialog/VBoxContainer/Total_ink/total_camp
+	var usedcamp = $WelcomeDialog/VBoxContainer/Ink_used/used_camp
+	var daycamp = $WelcomeDialog/VBoxContainer/First_day/day
+	var monthcamp = $WelcomeDialog/VBoxContainer/First_day/month
+	var yearcamp = $WelcomeDialog/VBoxContainer/First_day/year
+	
+	ink_total = float(totalcamp.text)
+	ink_used = float(usedcamp.text)
+	first_day["day"] = float(daycamp.text)
+	first_day["month"] = float(monthcamp.text)
+	first_day["year"] = float(yearcamp.text)
+	
 	print (ink_total)
+	print (ink_used)
+	print (first_day)
+	
+	#$WelcomeDialog.NOTIFICATION_POPUP_HIDE #no se porque no se cierra
+	$WelcomeDialog.hide()
+
+
+func _on_today_pressed():
+	var daycamp = $WelcomeDialog/VBoxContainer/First_day/day
+	var monthcamp = $WelcomeDialog/VBoxContainer/First_day/month
+	var yearcamp = $WelcomeDialog/VBoxContainer/First_day/year
+	
+	daycamp.text = str(date["day"])
+	monthcamp.text = str(date["month"])
+	yearcamp.text = str(date["year"])

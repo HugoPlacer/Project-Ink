@@ -222,10 +222,14 @@ texture = ExtResource( 8 )
 
 [node name="WelcomeDialog" type="WindowDialog" parent="Control"]
 visible = true
-margin_left = 100.0
-margin_top = 697.0
-margin_right = 980.0
-margin_bottom = 1747.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -457.0
+margin_top = -525.0
+margin_right = 457.0
+margin_bottom = 525.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -233,7 +237,6 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/WelcomeDialog"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 9.0
 margin_bottom = -6.0
 custom_constants/separation = 136
 __meta__ = {
@@ -241,7 +244,7 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer"]
-margin_right = 889.0
+margin_right = 914.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 0, 100 )
 custom_fonts/font = ExtResource( 4 )
@@ -252,128 +255,110 @@ __meta__ = {
 
 [node name="First_day" type="HBoxContainer" parent="Control/WelcomeDialog/VBoxContainer"]
 margin_top = 236.0
-margin_right = 889.0
+margin_right = 914.0
 margin_bottom = 336.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_right = 440.0
+margin_right = 400.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 440, 100 )
+rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 4 )
 text = "First_day"
 align = 1
 
-[node name="OptionButton" type="OptionButton" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 444.0
-margin_right = 544.0
+[node name="day" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 404.0
+margin_right = 558.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 133, 100 )
 custom_fonts/font = ExtResource( 6 )
-text = "1"
-items = [ "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null, "4", null, false, 4, null ]
-selected = 0
+placeholder_text = "day"
 
-[node name="OptionButton2" type="OptionButton" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 548.0
-margin_right = 648.0
+[node name="month" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 562.0
+margin_right = 716.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 133, 100 )
 custom_fonts/font = ExtResource( 6 )
-text = "1"
-items = [ "1", null, false, 1, null, "2", null, false, 2, null, "3", null, false, 3, null ]
-selected = 0
+placeholder_text = "month"
 
-[node name="OptionButton3" type="OptionButton" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 652.0
-margin_right = 785.0
+[node name="year" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 720.0
+margin_right = 874.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 133, 100 )
 custom_fonts/font = ExtResource( 6 )
-text = "2021"
-items = [ "2021", null, false, 2021, null, "2022", null, false, 2022, null ]
-selected = 0
+placeholder_text = "year"
 
-[node name="Button" type="Button" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 789.0
-margin_right = 889.0
+[node name="today" type="Button" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
+margin_left = 878.0
+margin_right = 908.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+rect_min_size = Vector2( 30, 100 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Total_ink" type="HBoxContainer" parent="Control/WelcomeDialog/VBoxContainer"]
 margin_top = 472.0
-margin_right = 889.0
+margin_right = 914.0
 margin_bottom = 572.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer/Total_ink"]
-margin_right = 440.0
+margin_right = 400.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 440, 100 )
+rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 4 )
 text = "Total_ink"
 align = 1
 
 [node name="total_camp" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/Total_ink"]
-margin_left = 444.0
-margin_right = 744.0
+margin_left = 404.0
+margin_right = 804.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 100 )
+rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="Control/WelcomeDialog/VBoxContainer/Total_ink"]
-margin_left = 748.0
-margin_right = 848.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+align = 1
+placeholder_text = "ink total in cm"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Ink_used" type="HBoxContainer" parent="Control/WelcomeDialog/VBoxContainer"]
 margin_top = 708.0
-margin_right = 889.0
+margin_right = 914.0
 margin_bottom = 808.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="Label" type="Label" parent="Control/WelcomeDialog/VBoxContainer/Ink_used"]
-margin_right = 440.0
+margin_right = 400.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 440, 100 )
+rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 4 )
 text = "Ink_used"
 align = 1
 
 [node name="used_camp" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/Ink_used"]
-margin_left = 444.0
-margin_right = 744.0
+margin_left = 404.0
+margin_right = 804.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 300, 100 )
+rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 6 )
+align = 1
+placeholder_text = "ink used in cm"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Control/WelcomeDialog/VBoxContainer/Ink_used"]
-margin_left = 748.0
-margin_right = 848.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="Control/WelcomeDialog/VBoxContainer"]
+[node name="accept_button" type="Button" parent="Control/WelcomeDialog/VBoxContainer"]
 margin_top = 944.0
-margin_right = 889.0
+margin_right = 914.0
 margin_bottom = 1044.0
 rect_min_size = Vector2( 300, 100 )
+custom_fonts/font = ExtResource( 6 )
+text = "accept_button"
 
-[connection signal="text_entered" from="Control/WelcomeDialog/VBoxContainer/Total_ink/total_camp" to="Control" method="_on_total_camp_text_entered"]
-[connection signal="text_entered" from="Control/WelcomeDialog/VBoxContainer/Ink_used/used_camp" to="Control" method="_on_used_camp_text_entered"]
+[connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/First_day/today" to="Control" method="_on_today_pressed"]
+[connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/accept_button" to="Control" method="_on_accept_button_pressed"]
