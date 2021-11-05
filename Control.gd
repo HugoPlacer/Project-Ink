@@ -32,9 +32,7 @@ var savedata = {
 func _ready():
 	get_tree().set_quit_on_go_back(false)
 	load_day()
-	welcome_window()
-	print(savedata)
-	#date.hash = 15893849432522
+	#date.hash = 15893849433232522
 	
 	if date.hash() != savedata["date"].hash():
 		print ("dia diferente")
@@ -101,7 +99,6 @@ func _process(delta):
 	$Control/VBoxContainer2/HBoxContainer/DiasTotales.text = str(int(ink_lifetime), " dias")
 	
 	
-
 
 func save_day():
 	var file = File.new()
