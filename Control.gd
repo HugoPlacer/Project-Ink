@@ -172,3 +172,7 @@ func _on_today_pressed():
 	daycamp.text = str(date["day"])
 	monthcamp.text = str(date["month"])
 	yearcamp.text = str(date["year"])
+
+
+func _on_Button_pressed():
+	$Panel2.show()

@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Rect-11.png" type="Texture" id=1]
 [ext_resource path="res://MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Titulo.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/Texto.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Themes/new_theme.tres" type="Theme" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 5 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,42 +45,16 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="GridContainer"]
-margin_right = 357.0
-margin_bottom = 399.0
-icon = ExtResource( 1 )
-flat = true
+margin_right = 345.0
+margin_bottom = 393.0
+rect_min_size = Vector2( 345, 393 )
 
 [node name="Button2" type="Button" parent="GridContainer"]
-margin_left = 462.0
-margin_right = 819.0
-margin_bottom = 399.0
-icon = ExtResource( 1 )
-flat = true
-
-[node name="Label" type="Label" parent="GridContainer/Button2"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-grow_vertical = 2
-rect_min_size = Vector2( 0, 100 )
-custom_fonts/font = ExtResource( 4 )
+margin_left = 450.0
+margin_right = 795.0
+margin_bottom = 393.0
+rect_min_size = Vector2( 345, 393 )
 text = "Debug"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureButton" type="TextureButton" parent="GridContainer"]
-margin_top = 403.0
-margin_right = 357.0
-margin_bottom = 503.0
-rect_min_size = Vector2( 0, 100 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="GridContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="GridContainer/Button2" to="." method="_on_Button2_pressed"]

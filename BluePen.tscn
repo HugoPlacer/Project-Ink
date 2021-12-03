@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/default_fontdata.tres" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://pen_scene.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Screenshot_2021-10-28-10-18-38_3840x1080.png" type="Texture" id=8]
 [ext_resource path="res://Gyro_rotation.gd" type="Script" id=9]
+[ext_resource path="res://Themes/new_theme.tres" type="Theme" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
@@ -18,11 +19,17 @@ font_data = ExtResource( 2 )
 size = 60
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+
 [node name="Spatial" type="Spatial"]
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 10 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,14 +96,14 @@ __meta__ = {
 
 [node name="DiasRestantes" type="Label" parent="Control/Control/VBoxContainer2"]
 margin_right = 656.0
-margin_bottom = 87.0
+margin_bottom = 75.0
 custom_fonts/font = ExtResource( 4 )
 text = "Dias restantes:"
 
 [node name="DiasRestantes2" type="ProgressBar" parent="Control/Control/VBoxContainer2"]
-margin_top = 174.0
+margin_top = 162.0
 margin_right = 656.0
-margin_bottom = 281.0
+margin_bottom = 269.0
 rect_min_size = Vector2( 0, 107 )
 custom_fonts/font = SubResource( 1 )
 percent_visible = false
@@ -115,18 +122,18 @@ __meta__ = {
 }
 
 [node name="Cantidad de tinta usada" type="Label" parent="Control/Control/VBoxContainer2"]
-margin_top = 368.0
+margin_top = 356.0
 margin_right = 656.0
-margin_bottom = 545.0
+margin_bottom = 509.0
 rect_min_size = Vector2( 0, 99 )
 custom_fonts/font = ExtResource( 4 )
 text = "Cantidad de tinta
  usada:"
 
 [node name="TintaUsada" type="ProgressBar" parent="Control/Control/VBoxContainer2"]
-margin_top = 632.0
+margin_top = 596.0
 margin_right = 656.0
-margin_bottom = 739.0
+margin_bottom = 703.0
 rect_min_size = Vector2( 0, 107 )
 custom_fonts/font = SubResource( 1 )
 __meta__ = {
@@ -134,17 +141,17 @@ __meta__ = {
 }
 
 [node name="Dias totales fecha" type="Label" parent="Control/Control/VBoxContainer2"]
-margin_top = 826.0
+margin_top = 790.0
 margin_right = 656.0
-margin_bottom = 925.0
+margin_bottom = 889.0
 rect_min_size = Vector2( 0, 99 )
 custom_fonts/font = ExtResource( 4 )
 text = "Dias totales y fecha"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Control/VBoxContainer2"]
-margin_top = 1012.0
+margin_top = 976.0
 margin_right = 656.0
-margin_bottom = 1119.0
+margin_bottom = 1083.0
 rect_min_size = Vector2( 0, 107 )
 alignment = 1
 __meta__ = {
@@ -172,9 +179,9 @@ align = 1
 valign = 1
 
 [node name="GraphNode" type="GraphNode" parent="Control/Control/VBoxContainer2"]
-margin_top = 1206.0
+margin_top = 1170.0
 margin_right = 656.0
-margin_bottom = 1506.0
+margin_bottom = 1470.0
 rect_min_size = Vector2( 0, 300 )
 
 [node name="ViewportContainer" type="ViewportContainer" parent="Control"]
@@ -182,8 +189,9 @@ anchor_left = -0.0349585
 anchor_top = 0.225792
 anchor_right = 0.353042
 anchor_bottom = 0.934375
-margin_right = -0.0400085
-margin_bottom = -0.600098
+margin_left = -7.62939e-06
+margin_right = 77.5595
+margin_bottom = 238.902
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -203,6 +211,16 @@ fov = 27.8
 
 [node name="bluepen" parent="Control/ViewportContainer/Viewport" instance=ExtResource( 7 )]
 
+[node name="Button" type="Button" parent="Control"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -151.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Fps" type="Label" parent="Control"]
 margin_top = 2265.0
 margin_right = 243.0
@@ -221,7 +239,6 @@ position = Vector2( 540, 1194 )
 texture = ExtResource( 8 )
 
 [node name="WelcomeDialog" type="WindowDialog" parent="Control"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -269,31 +286,31 @@ align = 1
 
 [node name="day" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
 margin_left = 404.0
-margin_right = 558.0
+margin_right = 548.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 133, 100 )
 custom_fonts/font = ExtResource( 6 )
 placeholder_text = "day"
 
 [node name="month" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 562.0
-margin_right = 716.0
+margin_left = 552.0
+margin_right = 696.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 133, 100 )
 custom_fonts/font = ExtResource( 6 )
 placeholder_text = "month"
 
 [node name="year" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 720.0
-margin_right = 874.0
+margin_left = 700.0
+margin_right = 844.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 133, 100 )
 custom_fonts/font = ExtResource( 6 )
 placeholder_text = "year"
 
 [node name="today" type="Button" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 878.0
-margin_right = 908.0
+margin_left = 848.0
+margin_right = 878.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 30, 100 )
 __meta__ = {
@@ -360,5 +377,66 @@ rect_min_size = Vector2( 300, 100 )
 custom_fonts/font = ExtResource( 6 )
 text = "accept_button"
 
+[node name="Panel2" type="Panel" parent="Control"]
+visible = false
+margin_top = 1609.0
+margin_right = 1080.0
+margin_bottom = 2400.0
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel2"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = -738.0
+margin_right = -50.0
+margin_bottom = -50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel2/VBoxContainer"]
+margin_right = 980.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Label" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
+margin_top = 31.0
+margin_right = 490.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 490, 0 )
+text = "Dias Totales"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Panel2/VBoxContainer"]
+margin_top = 154.0
+margin_right = 980.0
+margin_bottom = 304.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Tinta Total" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
+margin_top = 31.0
+margin_right = 490.0
+margin_bottom = 118.0
+rect_min_size = Vector2( 490, 0 )
+text = "Tinta total"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Panel2/VBoxContainer"]
+margin_top = 308.0
+margin_right = 980.0
+margin_bottom = 485.0
+rect_min_size = Vector2( 0, 150 )
+
+[node name="Tinta Total" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
+margin_right = 490.0
+margin_bottom = 177.0
+rect_min_size = Vector2( 490, 0 )
+text = "Registrar medición"
+autowrap = true
+
+[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/First_day/today" to="Control" method="_on_today_pressed"]
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/accept_button" to="Control" method="_on_accept_button_pressed"]

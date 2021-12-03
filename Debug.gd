@@ -162,3 +162,34 @@ func _on_VSlider_value_changed(value):
 	print(value)
 	$VSlider/ColorRect.margin_top = value
 	#$VSlider/ColorRect.margin_bottom = 1550
+
+
+func _unhandled_input(event):
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			_on_touch_pressed(event)
+		else:
+			_on_touch_released(event)
+	if event is InputEventScreenDrag:
+		_on_touch_drag(event)
+
+func _on_touch_pressed(event):
+	print ("presionado", event.position)
+	
+	
+func _on_touch_released(event):
+	print ("soltado", event.position)
+	
+
+func _on_touch_drag(event):
+	print(event.position)
+	
+	
+
+
+func _on_Button3_toggled(button_pressed):
+	var vbox = $VBoxContainer2
+	if button_pressed == true:
+		vbox.show()
+	else:
+		vbox.hide()
