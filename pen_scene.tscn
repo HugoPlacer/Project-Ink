@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Models/bluepen.glb" type="PackedScene" id=1]
-[ext_resource path="res://rotation_test.tres" type="Animation" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -10,6 +9,3 @@
 [node name="Cylinder001" parent="." index="0"]
 layers = 524288
 material/0 = SubResource( 1 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-anims/rotation_test = ExtResource( 2 )

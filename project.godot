@@ -14,6 +14,12 @@ config/name="Project Ink"
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+MainMenu="*res://MainMenu.tscn"
+OptionsMenu="*res://OptionsMenu.tscn"
+BluePen="*res://BluePen.tscn"
+
 [display]
 
 window/size/width=1080

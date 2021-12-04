@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/default_fontdata.tres" type="DynamicFontData" id=2]
@@ -10,14 +10,45 @@
 [ext_resource path="res://Screenshot_2021-10-28-10-18-38_3840x1080.png" type="Texture" id=8]
 [ext_resource path="res://Gyro_rotation.gd" type="Script" id=9]
 [ext_resource path="res://Themes/new_theme.tres" type="Theme" id=10]
+[ext_resource path="res://info.svg" type="Texture" id=11]
+[ext_resource path="res://info_panel.gd" type="Script" id=12]
+[ext_resource path="res://Icons/plus.svg" type="Texture" id=13]
+[ext_resource path="res://Icons/minus.svg" type="Texture" id=14]
+[ext_resource path="res://Icons/arrow-right-circle.svg" type="Texture" id=15]
+[ext_resource path="res://editvalues.gd" type="Script" id=16]
+[ext_resource path="res://Icons/chevrons-up.svg" type="Texture" id=17]
+[ext_resource path="res://Icons/chevrons-down.svg" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 2 )
 
+[sub_resource type="Animation" id=5]
+resource_name = "rotation_test"
+length = 10.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cylinder001:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
 [sub_resource type="DynamicFont" id=2]
 size = 60
 font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -211,15 +242,9 @@ fov = 27.8
 
 [node name="bluepen" parent="Control/ViewportContainer/Viewport" instance=ExtResource( 7 )]
 
-[node name="Button" type="Button" parent="Control"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -151.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Rotation" type="AnimationPlayer" parent="Control/ViewportContainer/Viewport"]
+root_node = NodePath("../bluepen")
+anims/rotation_test = SubResource( 5 )
 
 [node name="Fps" type="Label" parent="Control"]
 margin_top = 2265.0
@@ -286,33 +311,40 @@ align = 1
 
 [node name="day" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
 margin_left = 404.0
-margin_right = 548.0
+margin_right = 549.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 133, 100 )
+custom_constants/minimum_spaces = 5
 custom_fonts/font = ExtResource( 6 )
+align = 1
 placeholder_text = "day"
 
 [node name="month" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 552.0
-margin_right = 696.0
+margin_left = 553.0
+margin_right = 698.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 133, 100 )
+custom_constants/minimum_spaces = 5
 custom_fonts/font = ExtResource( 6 )
+align = 1
 placeholder_text = "month"
 
 [node name="year" type="LineEdit" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 700.0
-margin_right = 844.0
+margin_left = 702.0
+margin_right = 847.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 133, 100 )
+custom_constants/minimum_spaces = 5
 custom_fonts/font = ExtResource( 6 )
+align = 1
 placeholder_text = "year"
 
 [node name="today" type="Button" parent="Control/WelcomeDialog/VBoxContainer/First_day"]
-margin_left = 848.0
-margin_right = 878.0
+margin_left = 851.0
+margin_right = 881.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 30, 100 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -338,7 +370,7 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 6 )
 align = 1
-placeholder_text = "ink total in cm"
+placeholder_text = "ink in cm"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -364,7 +396,7 @@ margin_bottom = 100.0
 rect_min_size = Vector2( 400, 100 )
 custom_fonts/font = ExtResource( 6 )
 align = 1
-placeholder_text = "ink used in cm"
+placeholder_text = "ink in cm"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -377,12 +409,28 @@ rect_min_size = Vector2( 300, 100 )
 custom_fonts/font = ExtResource( 6 )
 text = "accept_button"
 
+[node name="Editvalues" type="Button" parent="Control"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -151.0
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chevrons-up" type="Sprite" parent="Control/Editvalues"]
+position = Vector2( 540.208, 71.6688 )
+scale = Vector2( 3.75939, 3.75939 )
+texture = ExtResource( 17 )
+
 [node name="Panel2" type="Panel" parent="Control"]
-visible = false
-margin_top = 1609.0
+margin_top = 1479.0
 margin_right = 1080.0
 margin_bottom = 2400.0
 custom_styles/panel = SubResource( 3 )
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -392,51 +440,169 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 50.0
-margin_top = -738.0
+margin_top = -793.0
 margin_right = -50.0
-margin_bottom = -50.0
+margin_bottom = -80.0
+custom_constants/separation = 91
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel2/VBoxContainer"]
 margin_right = 980.0
-margin_bottom = 150.0
-rect_min_size = Vector2( 0, 150 )
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 130 )
 
 [node name="Label" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
-margin_top = 31.0
+margin_top = 27.0
 margin_right = 490.0
-margin_bottom = 118.0
+margin_bottom = 102.0
 rect_min_size = Vector2( 490, 0 )
 text = "Dias Totales"
 
+[node name="menos" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 494.0
+margin_right = 554.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 60, 0 )
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+
+[node name="LineEdit" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 558.0
+margin_right = 906.0
+margin_bottom = 130.0
+
+[node name="mas" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
+margin_left = 910.0
+margin_right = 970.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 60, 0 )
+icon = ExtResource( 13 )
+flat = true
+expand_icon = true
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/Panel2/VBoxContainer"]
-margin_top = 154.0
+margin_top = 221.0
 margin_right = 980.0
-margin_bottom = 304.0
+margin_bottom = 371.0
 rect_min_size = Vector2( 0, 150 )
 
 [node name="Tinta Total" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
-margin_top = 31.0
+margin_top = 37.0
 margin_right = 490.0
-margin_bottom = 118.0
+margin_bottom = 112.0
 rect_min_size = Vector2( 490, 0 )
 text = "Tinta total"
 
+[node name="menos" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
+margin_left = 494.0
+margin_right = 554.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 60, 0 )
+icon = ExtResource( 14 )
+flat = true
+expand_icon = true
+
+[node name="LineEdit" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
+margin_left = 558.0
+margin_right = 906.0
+margin_bottom = 150.0
+
+[node name="mas" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
+margin_left = 910.0
+margin_right = 970.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 60, 0 )
+icon = ExtResource( 13 )
+flat = true
+expand_icon = true
+
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/Panel2/VBoxContainer"]
-margin_top = 308.0
+margin_top = 462.0
 margin_right = 980.0
-margin_bottom = 485.0
+margin_bottom = 615.0
 rect_min_size = Vector2( 0, 150 )
 
-[node name="Tinta Total" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
+[node name="medicion" type="Label" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
 margin_right = 490.0
-margin_bottom = 177.0
+margin_bottom = 153.0
 rect_min_size = Vector2( 490, 0 )
-text = "Registrar medición"
+text = "Registrar medición de tinta"
 autowrap = true
 
-[connection signal="pressed" from="Control/Button" to="Control" method="_on_Button_pressed"]
+[node name="LineEdit" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
+margin_left = 494.0
+margin_right = 842.0
+margin_bottom = 153.0
+
+[node name="enviar" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
+margin_left = 846.0
+margin_right = 936.0
+margin_bottom = 153.0
+rect_min_size = Vector2( 90, 0 )
+icon = ExtResource( 15 )
+flat = true
+expand_icon = true
+
+[node name="hide" type="Button" parent="Control/Panel2"]
+modulate = Color( 1, 1, 1, 0.219608 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -403.0
+margin_right = 403.0
+margin_bottom = 95.0
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Chevrons-down" type="Sprite" parent="Control/Panel2/hide"]
+position = Vector2( 407, 38 )
+scale = Vector2( 3.14698, 2.49251 )
+texture = ExtResource( 18 )
+
+[node name="info" type="Button" parent="Control"]
+margin_left = 959.0
+margin_top = 2249.0
+margin_right = 1025.0
+margin_bottom = 2324.0
+toggle_mode = true
+icon = ExtResource( 11 )
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="info_panel" type="Panel" parent="Control"]
+visible = false
+margin_right = 1080.0
+margin_bottom = 2249.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/info_panel"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 980.0
+margin_bottom = 2149.0
+custom_fonts/mono_font = ExtResource( 4 )
+custom_fonts/bold_italics_font = ExtResource( 3 )
+custom_fonts/italics_font = ExtResource( 4 )
+custom_fonts/bold_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/First_day/today" to="Control" method="_on_today_pressed"]
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/accept_button" to="Control" method="_on_accept_button_pressed"]
+[connection signal="pressed" from="Control/Editvalues" to="Control/Panel2" method="_on_Editvalues_pressed"]
+[connection signal="pressed" from="Control/Panel2/VBoxContainer/HBoxContainer3/enviar" to="Control/Panel2" method="_on_enviar_pressed"]
+[connection signal="pressed" from="Control/Panel2/hide" to="Control/Panel2" method="_on_hide_pressed"]
+[connection signal="toggled" from="Control/info" to="Control" method="_on_info_toggled"]

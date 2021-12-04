@@ -101,6 +101,7 @@ func _process(delta):
 	$Control/VBoxContainer2/HBoxContainer/DiasTotales.text = str(int(ink_lifetime), " dias")
 	
 	
+	
 
 func save_day():
 	var file = File.new()
@@ -174,5 +175,9 @@ func _on_today_pressed():
 	yearcamp.text = str(date["year"])
 
 
-func _on_Button_pressed():
-	$Panel2.show()
+func _on_info_toggled(button_pressed):
+	if button_pressed == true:
+		$info_panel.show()
+	else:
+		$info_panel.hide()
+

@@ -37,9 +37,18 @@ func _process(delta):
 	# Get our data
 	var grav = Input.get_gravity()
 	var gyro = Input.get_gyroscope()
+	var activated = bool()
 	
 	var gyro_and_grav = get_node("Viewport/bluepen")
 	var new_basis = rotate_by_gyro(gyro, gyro_and_grav.transform.basis, delta).orthonormalized()
-	gyro_and_grav.transform.basis = (drift_correction(new_basis, grav))
+	var giro = gyro_and_grav.transform.basis
+	
+	#gyro_and_grav.transform.basis = (drift_correction(new_basis, grav))
+	
+	var Animationode = $Viewport/Rotation
+	Animationode.play("rotation_test")
+		
+		
+	
 	
 

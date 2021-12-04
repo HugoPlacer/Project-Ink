@@ -22,3 +22,7 @@ func _on_Button_pressed():
 
 func _on_Button2_pressed():
 	get_tree().change_scene("res://Debug.tscn")
+
+
+func _on_Options_pressed():
+	get_tree().change_scene("res://OptionsMenu.tscn")
