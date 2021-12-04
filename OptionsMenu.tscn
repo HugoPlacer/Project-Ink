@@ -53,5 +53,3 @@ margin_left = 804.0
 margin_right = 868.0
 margin_bottom = 100.0
 flat = true
-
-[connection signal="toggled" from="VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]

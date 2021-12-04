@@ -5,7 +5,13 @@ extends ViewportContainer
 # var a = 2
 # var b = "text"
 
-
+func _ready():
+	var Animationode = $Viewport/Rotation
+	Animationode.play("rotation_test")
+	
+	var root = get_node("/root/OptionsMenu")
+	var checkbutton = root.get_node("VBoxContainer/HBoxContainer/CheckButton")
+	checkbutton.connect("activated",self,"_on_CheckButton_toggled")
 # Called when the node enters the scene tree for the first time.
 
 func rotate_by_gyro(p_gyro, p_basis, p_delta):
@@ -43,10 +49,24 @@ func _process(delta):
 	var new_basis = rotate_by_gyro(gyro, gyro_and_grav.transform.basis, delta).orthonormalized()
 	var giro = gyro_and_grav.transform.basis
 	
-	#gyro_and_grav.transform.basis = (drift_correction(new_basis, grav))
+
 	
-	var Animationode = $Viewport/Rotation
-	Animationode.play("rotation_test")
+
+	
+func _on_CheckButton_toggled(button_pressed):
+	if button_pressed == true:
+		print("se ha activado en gyro")
+	
+	#var grav = Input.get_gravity()
+	#var gyro = Input.get_gyroscope()
+	#var activated = bool()
+	
+	#var gyro_and_grav = get_node("Viewport/bluepen")
+	#var new_basis = rotate_by_gyro(gyro, gyro_and_grav.transform.basis, delta).orthonormalized()
+	#var giro = gyro_and_grav.transform.basis
+	
+	#gyro_and_grav.transform.basis = (drift_correction(new_basis, grav))
+
 		
 		
 	

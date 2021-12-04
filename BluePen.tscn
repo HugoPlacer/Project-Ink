@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/default_fontdata.tres" type="DynamicFontData" id=2]
@@ -21,6 +21,7 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 60
+use_filter = true
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=5]
@@ -49,6 +50,25 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id=8]
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Shader" id=6]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(0, 5);
+
+void fragment() {
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/blur_amount = 3.089
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -166,7 +186,7 @@ margin_top = 596.0
 margin_right = 656.0
 margin_bottom = 703.0
 rect_min_size = Vector2( 0, 107 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -264,6 +284,7 @@ position = Vector2( 540, 1194 )
 texture = ExtResource( 8 )
 
 [node name="WelcomeDialog" type="WindowDialog" parent="Control"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -407,6 +428,7 @@ margin_right = 914.0
 margin_bottom = 1044.0
 rect_min_size = Vector2( 300, 100 )
 custom_fonts/font = ExtResource( 6 )
+custom_styles/normal = SubResource( 8 )
 text = "accept_button"
 
 [node name="Editvalues" type="Button" parent="Control"]
@@ -425,7 +447,18 @@ position = Vector2( 540.208, 71.6688 )
 scale = Vector2( 3.75939, 3.75939 )
 texture = ExtResource( 17 )
 
+[node name="Blur" type="ColorRect" parent="Control"]
+visible = false
+material = SubResource( 7 )
+margin_right = 1080.0
+margin_bottom = 2400.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Panel2" type="Panel" parent="Control"]
+visible = false
+light_mask = 3
 margin_top = 1479.0
 margin_right = 1080.0
 margin_bottom = 2400.0
@@ -536,6 +569,7 @@ autowrap = true
 margin_left = 494.0
 margin_right = 842.0
 margin_bottom = 153.0
+align = 1
 
 [node name="enviar" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
 margin_left = 846.0
