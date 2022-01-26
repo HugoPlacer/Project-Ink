@@ -284,7 +284,6 @@ position = Vector2( 540, 1194 )
 texture = ExtResource( 8 )
 
 [node name="WelcomeDialog" type="WindowDialog" parent="Control"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -457,7 +456,6 @@ __meta__ = {
 }
 
 [node name="Panel2" type="Panel" parent="Control"]
-visible = false
 light_mask = 3
 margin_top = 1479.0
 margin_right = 1080.0
@@ -506,6 +504,7 @@ expand_icon = true
 margin_left = 558.0
 margin_right = 906.0
 margin_bottom = 130.0
+context_menu_enabled = false
 
 [node name="mas" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
 margin_left = 910.0
@@ -598,6 +597,73 @@ position = Vector2( 407, 38 )
 scale = Vector2( 3.14698, 2.49251 )
 texture = ExtResource( 18 )
 
+[node name="Editar valores" type="WindowDialog" parent="Control/Panel2"]
+visible = true
+margin_left = 121.0
+margin_top = -805.0
+margin_right = 921.0
+margin_bottom = -405.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel2/Editar valores"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel2/Editar valores/VBoxContainer"]
+margin_right = 750.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 0, 70 )
+
+[node name="LineEdit" type="LineEdit" parent="Control/Panel2/Editar valores/VBoxContainer"]
+margin_top = 74.0
+margin_right = 750.0
+margin_bottom = 174.0
+rect_min_size = Vector2( 0, 100 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/Panel2/Editar valores/VBoxContainer"]
+margin_top = 178.0
+margin_right = 750.0
+margin_bottom = 228.0
+rect_min_size = Vector2( 0, 50 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel2/Editar valores/VBoxContainer"]
+margin_top = 232.0
+margin_right = 750.0
+margin_bottom = 332.0
+rect_min_size = Vector2( 0, 100 )
+alignment = 1
+
+[node name="Button2" type="Button" parent="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer"]
+margin_right = 373.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 373, 100 )
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer"]
+margin_left = 377.0
+margin_right = 750.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 373, 0 )
+text = "Accept"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="info" type="Button" parent="Control"]
 margin_left = 959.0
 margin_top = 2249.0
@@ -637,6 +703,10 @@ __meta__ = {
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/First_day/today" to="Control" method="_on_today_pressed"]
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/accept_button" to="Control" method="_on_accept_button_pressed"]
 [connection signal="pressed" from="Control/Editvalues" to="Control/Panel2" method="_on_Editvalues_pressed"]
+[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer/LineEdit" to="Control/Panel2" method="_on_LineEdit_focus_entered"]
+[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer2/LineEdit" to="Control/Panel2" method="_on_LineEdit_focus_entered"]
+[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer3/LineEdit" to="Control/Panel2" method="_on_LineEdit_focus_entered"]
 [connection signal="pressed" from="Control/Panel2/VBoxContainer/HBoxContainer3/enviar" to="Control/Panel2" method="_on_enviar_pressed"]
 [connection signal="pressed" from="Control/Panel2/hide" to="Control/Panel2" method="_on_hide_pressed"]
+[connection signal="pressed" from="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer/Button2" to="Control/Panel2" method="_on_Button2_pressed"]
 [connection signal="toggled" from="Control/info" to="Control" method="_on_info_toggled"]

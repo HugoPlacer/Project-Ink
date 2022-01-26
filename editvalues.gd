@@ -3,6 +3,7 @@ extends Panel
 onready var controlnode = get_parent()
 
 onready var medicion = $VBoxContainer/HBoxContainer3/LineEdit
+onready var edit_popup = $"Editar valores"
 
 onready var blur = $"../Blur"
 
@@ -31,3 +32,11 @@ func _on_enviar_pressed():
 	controlnode.ink_used = float(medicion.text)
 
 
+
+
+func _on_LineEdit_focus_entered():
+	edit_popup.popup()
+
+
+func _on_Button2_pressed():
+	edit_popup.hide()
