@@ -500,7 +500,7 @@ icon = ExtResource( 14 )
 flat = true
 expand_icon = true
 
-[node name="LineEdit" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
+[node name="DiasTotales" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
 margin_left = 558.0
 margin_right = 906.0
 margin_bottom = 130.0
@@ -537,7 +537,7 @@ icon = ExtResource( 14 )
 flat = true
 expand_icon = true
 
-[node name="LineEdit" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
+[node name="Tinta Total2" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
 margin_left = 558.0
 margin_right = 906.0
 margin_bottom = 150.0
@@ -564,7 +564,7 @@ rect_min_size = Vector2( 490, 0 )
 text = "Registrar medición de tinta"
 autowrap = true
 
-[node name="LineEdit" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
+[node name="Medicion tinta" type="LineEdit" parent="Control/Panel2/VBoxContainer/HBoxContainer3"]
 margin_left = 494.0
 margin_right = 842.0
 margin_bottom = 153.0
@@ -599,10 +599,14 @@ texture = ExtResource( 18 )
 
 [node name="Editar valores" type="WindowDialog" parent="Control/Panel2"]
 visible = true
-margin_left = 121.0
-margin_top = -805.0
-margin_right = 921.0
-margin_bottom = -405.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -200.0
+margin_right = 400.0
+margin_bottom = 200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -645,7 +649,7 @@ margin_bottom = 332.0
 rect_min_size = Vector2( 0, 100 )
 alignment = 1
 
-[node name="Button2" type="Button" parent="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer"]
+[node name="Cancel" type="Button" parent="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer"]
 margin_right = 373.0
 margin_bottom = 100.0
 rect_min_size = Vector2( 373, 100 )
@@ -654,7 +658,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer"]
+[node name="Accept" type="Button" parent="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer"]
 margin_left = 377.0
 margin_right = 750.0
 margin_bottom = 100.0
@@ -703,10 +707,11 @@ __meta__ = {
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/First_day/today" to="Control" method="_on_today_pressed"]
 [connection signal="pressed" from="Control/WelcomeDialog/VBoxContainer/accept_button" to="Control" method="_on_accept_button_pressed"]
 [connection signal="pressed" from="Control/Editvalues" to="Control/Panel2" method="_on_Editvalues_pressed"]
-[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer/LineEdit" to="Control/Panel2" method="_on_LineEdit_focus_entered"]
-[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer2/LineEdit" to="Control/Panel2" method="_on_LineEdit_focus_entered"]
-[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer3/LineEdit" to="Control/Panel2" method="_on_LineEdit_focus_entered"]
+[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer/DiasTotales" to="Control/Panel2" method="_on_DiasTotales_focus_entered"]
+[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer2/Tinta Total2" to="Control/Panel2" method="_on_Tinta_Total2_focus_entered"]
+[connection signal="focus_entered" from="Control/Panel2/VBoxContainer/HBoxContainer3/Medicion tinta" to="Control/Panel2" method="_on_Medicion_tinta_focus_entered"]
 [connection signal="pressed" from="Control/Panel2/VBoxContainer/HBoxContainer3/enviar" to="Control/Panel2" method="_on_enviar_pressed"]
 [connection signal="pressed" from="Control/Panel2/hide" to="Control/Panel2" method="_on_hide_pressed"]
-[connection signal="pressed" from="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer/Button2" to="Control/Panel2" method="_on_Button2_pressed"]
+[connection signal="pressed" from="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer/Cancel" to="Control/Panel2" method="_on_Cancel_pressed"]
+[connection signal="pressed" from="Control/Panel2/Editar valores/VBoxContainer/HBoxContainer/Accept" to="Control/Panel2" method="_on_Accept_pressed"]
 [connection signal="toggled" from="Control/info" to="Control" method="_on_info_toggled"]
