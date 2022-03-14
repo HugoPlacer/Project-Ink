@@ -273,9 +273,6 @@ margin_bottom = 2394.0
 custom_fonts/font = SubResource( 2 )
 text = "60"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Screenshot_2021-10-28-10-18-38_3840x1080" type="Sprite" parent="Control"]
 visible = false
