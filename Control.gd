@@ -32,9 +32,9 @@ var savedata = {
 func _ready():
 	get_tree().set_quit_on_go_back(false)
 	load_day()
-	print(savedata)
+	print ("1")
 	#welcome_window()
-	#date.hash = 15893849433232522
+	#date.hash = 9384923234424
 	
 	if date.hash() != savedata["date"].hash():
 		print ("dia diferente")
@@ -59,7 +59,6 @@ func _ready():
 		inktime = ink_lifetime - days_used
 		savedata["inktime"] = inktime
 		save_day()
-		print (savedata)
 	else:
 		#cargar tota la info guardada en las variables
 		first_day = savedata["first_day"]
@@ -157,9 +156,7 @@ func _on_accept_button_pressed():
 	first_day["month"] = float(monthcamp.text)
 	first_day["year"] = float(yearcamp.text)
 	
-	print (ink_total)
-	print (ink_used)
-	print (first_day)
+	
 	
 	#$WelcomeDialog.NOTIFICATION_POPUP_HIDE #no se porque no se cierra
 	$WelcomeDialog.hide()

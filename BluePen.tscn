@@ -68,7 +68,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = SubResource( 6 )
-shader_param/blur_amount = 3.089
+shader_param/blur_amount = 0.0
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -456,6 +456,7 @@ __meta__ = {
 }
 
 [node name="Panel2" type="Panel" parent="Control"]
+visible = false
 light_mask = 3
 margin_top = 1479.0
 margin_right = 1080.0
@@ -504,6 +505,7 @@ expand_icon = true
 margin_left = 558.0
 margin_right = 906.0
 margin_bottom = 130.0
+align = 1
 context_menu_enabled = false
 
 [node name="mas" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer"]
@@ -541,6 +543,7 @@ expand_icon = true
 margin_left = 558.0
 margin_right = 906.0
 margin_bottom = 150.0
+align = 1
 
 [node name="mas" type="Button" parent="Control/Panel2/VBoxContainer/HBoxContainer2"]
 margin_left = 910.0
@@ -598,7 +601,6 @@ scale = Vector2( 3.14698, 2.49251 )
 texture = ExtResource( 18 )
 
 [node name="Editar valores" type="WindowDialog" parent="Control/Panel2"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

@@ -4,7 +4,7 @@ onready var controlnode = get_parent()
 
 onready var diastotales = $VBoxContainer/HBoxContainer/DiasTotales
 onready var tintatotal = $"VBoxContainer/HBoxContainer2/Tinta Total2"
-onready var medicion = $VBoxContainer/HBoxContainer3/LineEdit
+onready var medicion = $"VBoxContainer/HBoxContainer3/Medicion tinta"
 
 onready var edit_popup = $"Editar valores"
 
@@ -17,7 +17,7 @@ var index
 func _ready():
 	diastotales.text = str(controlnode.days_used)
 	tintatotal.text = str(controlnode.ink_total)
-	#medicion.text = str(controlnode.ink_used)
+	medicion.text = str(controlnode.ink_used)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,12 +26,14 @@ func _ready():
 
 
 func _on_Editvalues_pressed():
+	#blur.get_material().set_shader_param("blur_amount", )
 	blur.show()
 	show()
 
 
 func _on_hide_pressed():
-	blur.hide()
+	blur.get_material().set_shader_param("blur_amount", 0)
+	#blur.hide()
 	hide()
 
 
