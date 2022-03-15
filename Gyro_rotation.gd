@@ -7,7 +7,7 @@ extends ViewportContainer
 
 func _ready():
 	var Animationode = $Viewport/Rotation
-	Animationode.play("rotation_test")
+	Animationode.play("rotation")
 	
 	var root = get_node("/root/OptionsMenu")
 	var checkbutton = root.get_node("VBoxContainer/HBoxContainer/CheckButton")

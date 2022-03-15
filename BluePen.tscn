@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Control.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/default_fontdata.tres" type="DynamicFontData" id=2]
@@ -24,12 +24,27 @@ size = 60
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "rotation_test"
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("bluepen:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "rotation"
 length = 10.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Cylinder001:rotation_degrees")
+tracks/0/path = NodePath("bluepen:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -263,8 +278,8 @@ fov = 27.8
 [node name="bluepen" parent="Control/ViewportContainer/Viewport" instance=ExtResource( 7 )]
 
 [node name="Rotation" type="AnimationPlayer" parent="Control/ViewportContainer/Viewport"]
-root_node = NodePath("../bluepen")
-anims/rotation_test = SubResource( 5 )
+anims/RESET = SubResource( 9 )
+anims/rotation = SubResource( 10 )
 
 [node name="Fps" type="Label" parent="Control"]
 margin_top = 2265.0

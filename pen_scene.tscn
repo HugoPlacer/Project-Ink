@@ -3,12 +3,9 @@
 [ext_resource path="res://Models/bluepen.glb" type="PackedScene" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
-params_depth_draw_mode = 2
-albedo_color = Color( 1, 1, 1, 0 )
-roughness = 0.6
-refraction_enabled = true
-refraction_scale = 0.04
-refraction_texture_channel = 0
+flags_transparent = true
+albedo_color = Color( 1, 1, 1, 0.6 )
+roughness = 0.52
 
 [node name="bluepen" instance=ExtResource( 1 )]
 
